@@ -1,0 +1,53 @@
+﻿@page
+@model LogoutModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log out</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-link {
+            text-decoration: none;
+        }
+
+            .btn-link:hover {
+                color: #007bff;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Log out</h1>
+        @if (User.Identity?.IsAuthenticated ?? false)
+        {
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <button type="submit" class="btn btn-danger">Click here to Logout</button>
+        </form>
+        }
+        else
+        {
+        <p>You have successfully logged out of the application.</p>
+        }
+    </header>
+</body>
+</html>
+
